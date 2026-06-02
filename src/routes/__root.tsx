@@ -77,14 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "JAC SIALKOT" },
+      { name: "description", content: "An interactive auto showroom and 3S dealership app for JAC Sialkot City Motors." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "JAC SIALKOT" },
+      { property: "og:description", content: "An interactive auto showroom and 3S dealership app for JAC Sialkot City Motors." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "JAC SIALKOT" },
+      { name: "twitter:description", content: "An interactive auto showroom and 3S dealership app for JAC Sialkot City Motors." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d0a5ee7e-8949-4351-9910-9a9c0eb588e3/id-preview-f3056c54--bc2fccae-f8f8-4579-9140-03f442a535a4.lovable.app-1780387593277.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d0a5ee7e-8949-4351-9910-9a9c0eb588e3/id-preview-f3056c54--bc2fccae-f8f8-4579-9140-03f442a535a4.lovable.app-1780387593277.png" },
     ],
     links: [
       {
