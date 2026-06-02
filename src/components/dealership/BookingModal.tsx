@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronRight, ChevronLeft, Check, User, Phone, Car, Tag, Calendar, Sparkles } from "lucide-react";
-import { useBooking, type VehicleModel, type RequestType } from "./BookingProvider";
+import { useBooking, VEHICLE_MODELS, type VehicleModel, type RequestType } from "./BookingProvider";
 
-const MODELS: VehicleModel[] = ["JAC T9 Hunter", "JAC T6", "JAC X200"];
-const REQUESTS: RequestType[] = ["Test Drive", "Sales Inquiry", "Aftersales Workshop Appointment"];
+const MODELS: VehicleModel[] = VEHICLE_MODELS;
+const REQUESTS: RequestType[] = ["Test Drive", "Sales Inquiry", "Aftersales Workshop Appointment", "Service Appointment"];
 
 export function BookingModal() {
-  const { open, closeBooking, prefillModel, submitBooking, lastBooking, clearLast } = useBooking();
+  const { open, closeBooking, prefillModel, prefillRequest, submitBooking, lastBooking, clearLast } = useBooking();
   const [step, setStep] = useState(0);
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
@@ -20,8 +20,9 @@ export function BookingModal() {
     if (open) {
       setStep(0); setErrors({});
       if (prefillModel) setModel(prefillModel);
+      if (prefillRequest) setRequestType(prefillRequest);
     }
-  }, [open, prefillModel]);
+  }, [open, prefillModel, prefillRequest]);
 
   const validateStep = (s: number) => {
     const e: Record<string, string> = {};

@@ -1,73 +1,92 @@
 import { motion } from "framer-motion";
-import { ShoppingBag, Wrench, Package } from "lucide-react";
+import {
+  Wrench,
+  Gauge,
+  Droplet,
+  SprayCan,
+  Disc3,
+  Shield,
+  Package,
+  Sparkle,
+  CheckCircle2,
+  CalendarCheck,
+} from "lucide-react";
+import { useBooking } from "./BookingProvider";
 
 const services = [
-  {
-    icon: ShoppingBag,
-    title: "Sales",
-    tag: "S1",
-    desc: "Customizable fleet packages, instant trade-in evaluations, and end-to-end commercial leasing assistance from certified JAC advisors.",
-    points: ["Personal & Fleet Acquisition", "Trade-in Evaluation", "Commercial Leasing"],
-  },
-  {
-    icon: Wrench,
-    title: "Service",
-    tag: "S2",
-    desc: "Advanced diagnostic workshop with manufacturer-certified mechanics — operating right on the Wazirabad Road hub, 24/7.",
-    points: ["Computerized Diagnostics", "Periodic Maintenance", "Warranty Repairs"],
-  },
-  {
-    icon: Package,
-    title: "Spare Parts",
-    tag: "S3",
-    desc: "100% genuine JAC body parts and component inventory backed by a national supply network with rapid tracking updates.",
-    points: ["Genuine OEM Inventory", "Rapid Tracking", "Nationwide Sourcing"],
-  },
+  { icon: Wrench, title: "Periodic Maintenance", desc: "Manufacturer-scheduled health checks." },
+  { icon: Gauge, title: "Tuning & Diagnostics", desc: "Computerized engine performance scans." },
+  { icon: Droplet, title: "Oil Change", desc: "Genuine JAC-grade lubricants & filters." },
+  { icon: SprayCan, title: "Body Shop & Paint", desc: "Showroom-quality refinishing booths." },
+  { icon: Disc3, title: "Brake Services", desc: "Pad, rotor & ABS system overhaul." },
+  { icon: Shield, title: "PPF (Paint Protection Film)", desc: "Self-healing premium paint armour." },
+  { icon: Package, title: "Genuine Parts", desc: "100% OEM JAC inventory & warranty." },
+  { icon: Sparkle, title: "Compound Polish", desc: "Showroom-finish detailing & restoration." },
 ];
 
 export function Services() {
+  const { openBooking } = useBooking();
+
   return (
     <section id="services" className="relative py-24 lg:py-32">
       <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none" />
       <div className="relative mx-auto max-w-7xl px-4">
         <div className="text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-xs tracking-widest uppercase text-silver mb-5">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary" /> The 3S Ecosystem
+            <span className="h-1.5 w-1.5 rounded-full bg-primary" /> 3S Aftercare Ecosystem
           </div>
           <h2 className="text-4xl lg:text-6xl font-bold text-gradient-silver leading-[1.05]">
-            Sales. Service. <span className="text-gradient-crimson">Spare Parts.</span>
+            After Sales <span className="text-gradient-crimson">& Services</span>
           </h2>
           <p className="mt-5 text-muted-foreground text-base lg:text-lg">
-            One destination on the Sialkot–Wazirabad highway. Every touchpoint of your JAC ownership experience, engineered under one roof.
+            We are committed to keep your vehicle running at its best.
           </p>
         </div>
 
-        <div className="mt-14 grid md:grid-cols-3 gap-6">
-          {services.map((s, i) => (
-            <motion.div
-              key={s.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group relative glass-strong rounded-3xl p-8 hover:-translate-y-1 transition-transform duration-500"
-            >
-              <div className="absolute top-6 right-6 text-[11px] font-mono tracking-widest text-primary/80">{s.tag}</div>
-              <div className="h-14 w-14 rounded-2xl silver-bevel flex items-center justify-center mb-6 shadow-inner group-hover:rotate-6 transition-transform">
-                <s.icon className="h-6 w-6 text-background" strokeWidth={2.2} />
+        {/* Premium dark service grid with crimson + white borders */}
+        <div className="mt-14 rounded-3xl border border-white/10 bg-[#0b0d12]/80 backdrop-blur-xl p-5 sm:p-8 lg:p-10">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {services.map((s, i) => (
+              <motion.div
+                key={s.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.05 }}
+                className="group relative rounded-2xl bg-gradient-to-b from-white/[0.04] to-transparent border border-white/10 hover:border-primary/60 p-6 transition-all hover:-translate-y-1 hover:shadow-[0_10px_40px_-12px_hsl(var(--primary)/0.4)]"
+              >
+                <div className="flex items-start justify-between mb-5">
+                  <div className="h-12 w-12 rounded-xl bg-primary/15 border border-primary/30 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                    <s.icon className="h-5 w-5" strokeWidth={2.2} />
+                  </div>
+                  <CheckCircle2 className="h-5 w-5 text-primary/80" />
+                </div>
+                <h3 className="font-display text-base font-bold text-white leading-tight">
+                  {s.title}
+                </h3>
+                <p className="mt-2 text-xs text-muted-foreground leading-relaxed">{s.desc}</p>
+                <span className="absolute inset-x-6 bottom-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-5 border-t border-white/10 pt-8">
+            <div className="text-center sm:text-left">
+              <div className="text-xs uppercase tracking-widest text-primary mb-1">
+                Certified JAC Workshop
               </div>
-              <h3 className="font-display text-2xl font-bold text-gradient-silver">{s.title}</h3>
-              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
-              <ul className="mt-6 space-y-2.5 border-t border-white/5 pt-5">
-                {s.points.map((p) => (
-                  <li key={p} className="flex items-center gap-2.5 text-sm">
-                    <span className="h-1 w-1 rounded-full bg-primary" />
-                    <span className="text-silver/85">{p}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
+              <div className="text-lg font-display font-bold text-white">
+                Open 24/7 on Sialkot–Wazirabad Highway
+              </div>
+            </div>
+            <button
+              onClick={() => openBooking(undefined, "Service Appointment")}
+              className="group inline-flex items-center gap-2 rounded-xl bg-primary px-7 py-4 font-bold text-primary-foreground tracking-wider uppercase text-sm border-2 border-white/20 hover:crimson-glow hover:scale-[1.02] active:scale-100 transition-all"
+            >
+              <CalendarCheck className="h-5 w-5" />
+              Book Service Appointment
+            </button>
+          </div>
         </div>
       </div>
     </section>
