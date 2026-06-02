@@ -50,7 +50,8 @@ export function Footer() {
                   </div>
                   <div>
                     <div className="text-xs uppercase tracking-widest text-muted-foreground">Direct Line</div>
-                    <a href="tel:03217165555" className="mt-1 text-silver font-medium hover:text-primary block">0321 7165555</a>
+                    <a href="tel:03217165555" className="mt-1 text-silver font-medium hover:text-primary block">Mobile · 0321 7165555</a>
+                    <a href="tel:05223552555" className="mt-1 text-silver font-medium hover:text-primary block">PTCL Landline · 052-3552555</a>
                   </div>
                 </div>
               </div>
